@@ -45,13 +45,8 @@ public class JobTest {
     @Test
     public void testToString1() {
         Job testJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        String testString = "\n dhjds";
-//        assertEquals(testJob.toString(testJob).startsWith("\n"), testString.startsWith("\n") )
-
-
-
-
-
+        String testString = System.lineSeparator();
+        assertTrue(testJob.toString(testJob).startsWith(testString) && testJob.toString(testJob).endsWith(testString));
     }
     @Test
     public void testToString2() {

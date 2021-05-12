@@ -30,27 +30,16 @@ public class Job {
         String idField = (idValue + " ");
         String noData = "Data not available";
         String idKey = ("ID: ");
-        String idFinal = (idKey + idValue);
         String nameValue = job.getName();
         String nameKey = ("Name: ");
-        String nameField = ("_" + nameValue + "_");
-        String nameFinal = (nameKey + nameValue);
         String employerValue = job.getEmployer().toString();
         String employerKey = ("Employer: ");
-        String employerField = ("_" + employerValue + "_");
-        String employerFinal = (employerKey + employerValue);
         String locationValue = job.getLocation().toString();
         String locationKey = ("Location: ");
-        String locationField = ("_" + locationValue + "_");
-        String locationFinal = (locationKey + locationValue);
         String positionTypeValue = job.getPositionType().toString();
         String positionTypeKey = ("Position Type: ");
-        String positionTypeField = ("_" + positionTypeValue + "_");
-        String positionTypeFinal = (positionTypeKey + positionTypeValue);
         String coreCompetencyValue =job.getCoreCompetency().toString();
         String coreCompetencyKey = ("Core Competency: ");
-        String coreCompetencyField = ("_" + coreCompetencyValue + "_");
-        String coreCompetencyFinal = (coreCompetencyKey + coreCompetencyValue);
         String newLine = System.lineSeparator();
         String[] keyArray ={
                 idKey,
@@ -71,8 +60,9 @@ public class Job {
         StringBuilder finalS = new StringBuilder();
         finalS.append(newLine);
         for (int i = 0; i < 5; i++){
-            finalS.append(keyArray[i]).append(valueArray[i]);
             finalS.append(newLine);
+            finalS.append(keyArray[i]).append(valueArray[i]);
+
         }
         finalS.append(newLine);
         String finalString = finalS.toString();
