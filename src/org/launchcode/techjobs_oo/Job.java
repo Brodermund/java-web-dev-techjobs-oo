@@ -26,81 +26,61 @@ public class Job {
         this.coreCompetency = coreCompetency;
     }
     public String toString(Job job){
-        HashMap<String, String> jobMap = new HashMap<>();
-        ArrayList<String> endList = new ArrayList<>();
-        String id = String.valueOf(getId());
-        jobMap.put("Core Competency:",job.getCoreCompetency().getValue());
-        jobMap .put("Position Type:",job.getPositionType().getValue());
-        jobMap.put("Location:",job.getLocation().getValue());
-        jobMap.put("Employer:",job.getEmployer().getValue());
-        jobMap.put("Name:", job.getName());
-        jobMap.put("ID:",id);
-
-
-//        String name = ("Name: _" + job.getName() + "_");
-//        String employer =("Employer: _" + job.getEmployer().getValue() + "_");
-//        String location =("Location: _" + job.getLocation().getValue() + "_");
-//        String positionType =("Position Type: _" + job.getPositionType().getValue() + "_");
-//        String coreCompetency =("Core Competency: _" + job.getCoreCompetency().getValue() + "_");
-        for (Map.Entry<String, String> entry : jobMap.entrySet()) {
-            String value = entry.getValue();
-            String key = entry.getKey();
-            if (value.length() == 0 || value.isBlank()){
-                endList.add(key + "_Data not available_");
-            }
-            else{
-                endList.add(key + "_"+value+"_");
-
-
-            }
-            endList.add(System.lineSeparator());
-
+        int idValue = job.getId();
+        String idField = (idValue + " ");
+        String noData = "Data not available";
+        String idKey = ("ID: ");
+        String idFinal = (idKey + idValue);
+        String nameValue = job.getName();
+        String nameKey = ("Name: ");
+        String nameField = ("_" + nameValue + "_");
+        String nameFinal = (nameKey + nameValue);
+        String employerValue = job.getEmployer().toString();
+        String employerKey = ("Employer: ");
+        String employerField = ("_" + employerValue + "_");
+        String employerFinal = (employerKey + employerValue);
+        String locationValue = job.getLocation().toString();
+        String locationKey = ("Location: ");
+        String locationField = ("_" + locationValue + "_");
+        String locationFinal = (locationKey + locationValue);
+        String positionTypeValue = job.getPositionType().toString();
+        String positionTypeKey = ("Position Type: ");
+        String positionTypeField = ("_" + positionTypeValue + "_");
+        String positionTypeFinal = (positionTypeKey + positionTypeValue);
+        String coreCompetencyValue =job.getCoreCompetency().toString();
+        String coreCompetencyKey = ("Core Competency: ");
+        String coreCompetencyField = ("_" + coreCompetencyValue + "_");
+        String coreCompetencyFinal = (coreCompetencyKey + coreCompetencyValue);
+        String newLine = System.lineSeparator();
+        String[] keyArray ={
+                idKey,
+                nameKey,
+                employerKey,
+                locationKey,
+                positionTypeKey,
+                coreCompetencyKey
+        };
+        String[] valueArray = {
+          idField,
+          nameValue,
+          employerValue,
+          locationValue,
+          positionTypeValue,
+          coreCompetencyValue
+        };
+        StringBuilder finalS = new StringBuilder();
+        finalS.append(newLine);
+        for (int i = 0; i < 5; i++){
+            finalS.append(keyArray[i]).append(valueArray[i]);
+            finalS.append(newLine);
         }
-        String fin = String.join("",endList);
-
-
-//        String l = System.lineSeparator();
-//        String jobString = ( id + l + name + l + employer + l + location + l + positionType + l + coreCompetency);
-//        if (job.getName().length() == 0 || job.getName().isBlank()){
-//            joblist.put("Name:", "_Data not available_");
-//        }
-//        else {
-//            joblist.put("Name:","_" + job.getName() + "_");
-//        }
-//        if (job.getEmployer().getValue().length() == 0 || job.getEmployer().getValue().isBlank()){
-//            String employer =("Employer: _Data not available_");
-//        }
-//        else {
-//            String employer =("Employer: _" + job.getEmployer().getValue() + "_");
-//        }
-//        if (job.getLocation().getValue().length() == 0 || job.getLocation().getValue().isBlank()){
-//            String location =("Location: _Data not available_");
-//        }
-//        else {
-//            String location =("Location: _" + job.getLocation().getValue() + "_");
-//
-//        }
-//        if (job.getPositionType().getValue().length() == 0 || job.getPositionType().getValue().isBlank()){
-//            String positionType =("Position Type: _Data not available_");
-//        }
-//        else {
-//            String positionType =("Position Type: _" + job.getPositionType().getValue() + "_");
-//
-//        }
-//        if (job.getCoreCompetency().getValue().length() == 0 || job.getCoreCompetency().getValue().isBlank()){
-//            String coreCompetency =("Core Competency: _Data not available_");
-//        }else {
-//            String coreCompetency =("Core Competency: _" + job.getCoreCompetency().getValue() + "_");
-//
-//        }
-//        String jobString = ( id + l + name + l + employer + l + location + l + positionType + l + coreCompetency);
+        finalS.append(newLine);
+        String finalString = finalS.toString();
 
 
 
 
-//        r
-        return fin;
-
+        return finalString;
     }
 
 
