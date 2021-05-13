@@ -27,19 +27,19 @@ public class Job {
     }
     public String toString(Job job){
         int idValue = job.getId();
-        String idField = (idValue + " ");
+        String idField = String.valueOf(idValue);
         String noData = "Data not available";
-        String idKey = ("ID: ");
+        String idKey = ("ID");
         String nameValue = job.getName();
-        String nameKey = ("Name: ");
+        String nameKey = ("Name");
         String employerValue = job.getEmployer().toString();
-        String employerKey = ("Employer: ");
+        String employerKey = ("Employer");
         String locationValue = job.getLocation().toString();
-        String locationKey = ("Location: ");
+        String locationKey = ("Location");
         String positionTypeValue = job.getPositionType().toString();
-        String positionTypeKey = ("Position Type: ");
+        String positionTypeKey = ("Position Type");
         String coreCompetencyValue =job.getCoreCompetency().toString();
-        String coreCompetencyKey = ("Core Competency: ");
+        String coreCompetencyKey = ("Core Competency");
         String newLine = System.lineSeparator();
         String[] keyArray ={
                 idKey,
@@ -50,27 +50,25 @@ public class Job {
                 coreCompetencyKey
         };
         String[] valueArray = {
-          idField,
-          nameValue,
-          employerValue,
-          locationValue,
-          positionTypeValue,
-          coreCompetencyValue
+                idField,
+                nameValue,
+                employerValue,
+                locationValue,
+                positionTypeValue,
+                coreCompetencyValue
         };
         StringBuilder finalS = new StringBuilder();
         finalS.append(newLine);
-        for (int i = 0; i < 5; i++){
+        for (int i = 0; i < 6; i++){
+            if (valueArray[i] == null || valueArray[i].isBlank()){
+                finalS.append(keyArray[i]).append(": ").append(noData);
+            }
+            else {
+                finalS.append(keyArray[i]).append(": ").append(valueArray[i]);
+            }
             finalS.append(newLine);
-            finalS.append(keyArray[i]).append(valueArray[i]);
-
         }
-        finalS.append(newLine);
-        String finalString = finalS.toString();
-
-
-
-
-        return finalString;
+        return finalS.toString();
     }
 
 
