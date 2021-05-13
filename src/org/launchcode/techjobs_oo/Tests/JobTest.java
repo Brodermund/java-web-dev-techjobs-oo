@@ -44,40 +44,36 @@ public class JobTest {
     @Test
     public void testToString1() {
         Job testJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        String testString = System.lineSeparator();
-        assertTrue(testJob.toString().startsWith(testString) && testJob.toString().endsWith(testString));
-        //second Test
-        String[] arrStr = testJob.toString().split(testString,0);
-        assertEquals("ID: 1", arrStr[1]);
-        assertEquals("Name: Product tester", arrStr[2]);
-        assertEquals("Employer: ACME", arrStr[3]);
-        assertEquals("Location: Desert", arrStr[4]);
-        assertEquals("Position Type: Quality control", arrStr[5]);
-        assertEquals("Core Competency: Persistence", arrStr[6]);
+        assertTrue(testJob.toString().startsWith(System.lineSeparator()) && testJob.toString().endsWith(System.lineSeparator()));
     }
     @Test
     public void testToString2() {
         Job testJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         String testString = System.lineSeparator();
         String[] arrStr = testJob.toString().split(testString,0);
-        assertEquals("ID: 1", arrStr[1]);
-        assertEquals("Name: Product tester", arrStr[2]);
-        assertEquals("Employer: ACME", arrStr[3]);
-        assertEquals("Location: Desert", arrStr[4]);
-        assertEquals("Position Type: Quality control", arrStr[5]);
-        assertEquals("Core Competency: Persistence", arrStr[6]);
+        assertEquals("ID: "+ testJob.getId(), arrStr[1]);
+        assertEquals("Name: "+ testJob.getName(), arrStr[2]);
+        assertEquals("Employer: " + testJob.getEmployer(), arrStr[3]);
+        assertEquals("Location: " + testJob.getLocation(), arrStr[4]);
+        assertEquals("Position Type: " + testJob.getPositionType(), arrStr[5]);
+        assertEquals("Core Competency: " + testJob.getCoreCompetency(), arrStr[6]);
     }
     @Test
     public void testToString3() {
         Job testJob = new Job("Product tester", new Employer(""), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         String testString = System.lineSeparator();
         String[] arrStr = testJob.toString().split(testString,0);
-        assertEquals("ID: 1", arrStr[1]);
-        assertEquals("Name: Product tester", arrStr[2]);
+        assertEquals("ID: "+ (testJob.getId()), arrStr[1]);
+        assertEquals("Name: "+ testJob.getName(), arrStr[2]);
         assertEquals("Employer: Data not available", arrStr[3]);
-        assertEquals("Location: Desert", arrStr[4]);
-        assertEquals("Position Type: Quality control", arrStr[5]);
-        assertEquals("Core Competency: Persistence", arrStr[6]);
+        assertEquals("Location: " + testJob.getLocation(), arrStr[4]);
+        assertEquals("Position Type: " + testJob.getPositionType(), arrStr[5]);
+        assertEquals("Core Competency: " + testJob.getCoreCompetency(), arrStr[6]);
+    }
+    @Test
+    public void testToString4() {
+        Job testJob = new Job("", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency(""));
+        assertEquals("OOPS! This job does not seem to exist.", testJob.toString().trim());
     }
 }
 

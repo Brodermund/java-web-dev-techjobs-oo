@@ -46,15 +46,26 @@ public class Job {
         };
         StringBuilder finalS = new StringBuilder();
         finalS.append(System.lineSeparator());
-        for (int i = 0; i < 6; i++){
-            if (valueArray[i] == null || valueArray[i].isBlank()){
-                finalS.append(keyArray[i]).append(": ").append("Data not available");
-            }
-            else {
-                finalS.append(keyArray[i]).append(": ").append(valueArray[i]);
-            }
+        if (    name.isBlank() &&
+                String.valueOf(employer).isBlank() &&
+                String.valueOf(location).isBlank() &&
+                String.valueOf(positionType).isBlank() &&
+                String.valueOf(coreCompetency).isBlank()
+            )
+        {
+            finalS.append("OOPS! This job does not seem to exist.").append(System.lineSeparator());
+        }
+        else {
+            for (int i = 0; i < valueArray.length; i++) {
+                if (valueArray[i] == null || valueArray[i].isBlank()) {
+                    finalS.append(keyArray[i]).append(": ").append("Data not available");
+                }
+                else {
+                    finalS.append(keyArray[i]).append(": ").append(valueArray[i]);
+                }
 
-            finalS.append(System.lineSeparator());
+                finalS.append(System.lineSeparator());
+            }
         }
         return finalS.toString();
     }
