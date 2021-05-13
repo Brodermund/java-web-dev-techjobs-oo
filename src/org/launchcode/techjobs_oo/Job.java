@@ -26,7 +26,8 @@ public class Job {
         this.coreCompetency = coreCompetency;
     }
 
-    public String toString(Job job){
+    @Override
+    public String toString(){
         String[] keyArray ={
                 "ID",
                 "Name",
@@ -36,12 +37,12 @@ public class Job {
                 "Core Competency"
         };
         String[] valueArray = {
-                String.valueOf(job.getId()),
-                job.getName(),
-                job.getEmployer().toString(),
-                job.getLocation().toString(),
-                job.getPositionType().toString(),
-                job.getCoreCompetency().toString()
+                String.valueOf(id),
+                name,
+                String.valueOf(employer),
+                String.valueOf(location),
+                String.valueOf(positionType),
+                String.valueOf(coreCompetency),
         };
         StringBuilder finalS = new StringBuilder();
         finalS.append(System.lineSeparator());
@@ -58,8 +59,6 @@ public class Job {
         return finalS.toString();
     }
 
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -67,7 +66,7 @@ public class Job {
         return id == job.id;
     }
 
-    @Override
+
     public int hashCode() {
         return Objects.hash(id);
     }

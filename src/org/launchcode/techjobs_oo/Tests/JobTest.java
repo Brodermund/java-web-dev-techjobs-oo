@@ -45,9 +45,9 @@ public class JobTest {
     public void testToString1() {
         Job testJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         String testString = System.lineSeparator();
-        assertTrue(testJob.toString(testJob).startsWith(testString) && testJob.toString(testJob).endsWith(testString));
+        assertTrue(testJob.toString().startsWith(testString) && testJob.toString().endsWith(testString));
         //second Test
-        String[] arrStr = testJob.toString(testJob).split(testString,0);
+        String[] arrStr = testJob.toString().split(testString,0);
         assertEquals("ID: 1", arrStr[1]);
         assertEquals("Name: Product tester", arrStr[2]);
         assertEquals("Employer: ACME", arrStr[3]);
@@ -59,7 +59,7 @@ public class JobTest {
     public void testToString2() {
         Job testJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         String testString = System.lineSeparator();
-        String[] arrStr = testJob.toString(testJob).split(testString,0);
+        String[] arrStr = testJob.toString().split(testString,0);
         assertEquals("ID: 1", arrStr[1]);
         assertEquals("Name: Product tester", arrStr[2]);
         assertEquals("Employer: ACME", arrStr[3]);
@@ -71,7 +71,7 @@ public class JobTest {
     public void testToString3() {
         Job testJob = new Job("Product tester", new Employer(""), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         String testString = System.lineSeparator();
-        String[] arrStr = testJob.toString(testJob).split(testString,0);
+        String[] arrStr = testJob.toString().split(testString,0);
         assertEquals("ID: 1", arrStr[1]);
         assertEquals("Name: Product tester", arrStr[2]);
         assertEquals("Employer: Data not available", arrStr[3]);
