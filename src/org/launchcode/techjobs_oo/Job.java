@@ -25,48 +25,35 @@ public class Job {
         this.positionType = positionType;
         this.coreCompetency = coreCompetency;
     }
+
     public String toString(Job job){
-        int idValue = job.getId();
-        String idField = String.valueOf(idValue);
-        String noData = "Data not available";
-        String idKey = ("ID");
-        String nameValue = job.getName();
-        String nameKey = ("Name");
-        String employerValue = job.getEmployer().toString();
-        String employerKey = ("Employer");
-        String locationValue = job.getLocation().toString();
-        String locationKey = ("Location");
-        String positionTypeValue = job.getPositionType().toString();
-        String positionTypeKey = ("Position Type");
-        String coreCompetencyValue =job.getCoreCompetency().toString();
-        String coreCompetencyKey = ("Core Competency");
-        String newLine = System.lineSeparator();
         String[] keyArray ={
-                idKey,
-                nameKey,
-                employerKey,
-                locationKey,
-                positionTypeKey,
-                coreCompetencyKey
+                "ID",
+                "Name",
+                "Employer",
+                "Location",
+                "Position Type",
+                "Core Competency"
         };
         String[] valueArray = {
-                idField,
-                nameValue,
-                employerValue,
-                locationValue,
-                positionTypeValue,
-                coreCompetencyValue
+                String.valueOf(job.getId()),
+                job.getName(),
+                job.getEmployer().toString(),
+                job.getLocation().toString(),
+                job.getPositionType().toString(),
+                job.getCoreCompetency().toString()
         };
         StringBuilder finalS = new StringBuilder();
-        finalS.append(newLine);
+        finalS.append(System.lineSeparator());
         for (int i = 0; i < 6; i++){
             if (valueArray[i] == null || valueArray[i].isBlank()){
-                finalS.append(keyArray[i]).append(": ").append(noData);
+                finalS.append(keyArray[i]).append(": ").append("Data not available");
             }
             else {
                 finalS.append(keyArray[i]).append(": ").append(valueArray[i]);
             }
-            finalS.append(newLine);
+
+            finalS.append(System.lineSeparator());
         }
         return finalS.toString();
     }

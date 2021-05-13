@@ -3,7 +3,6 @@ package org.launchcode.techjobs_oo.Tests;
 import org.junit.Test;
 import org.launchcode.techjobs_oo.*;
 
-import java.util.Arrays;
 
 import static org.junit.Assert.*;
 
@@ -47,6 +46,14 @@ public class JobTest {
         Job testJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         String testString = System.lineSeparator();
         assertTrue(testJob.toString(testJob).startsWith(testString) && testJob.toString(testJob).endsWith(testString));
+        //second Test
+        String[] arrStr = testJob.toString(testJob).split(testString,0);
+        assertEquals("ID: 1", arrStr[1]);
+        assertEquals("Name: Product tester", arrStr[2]);
+        assertEquals("Employer: ACME", arrStr[3]);
+        assertEquals("Location: Desert", arrStr[4]);
+        assertEquals("Position Type: Quality control", arrStr[5]);
+        assertEquals("Core Competency: Persistence", arrStr[6]);
     }
     @Test
     public void testToString2() {
